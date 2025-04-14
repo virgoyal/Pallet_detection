@@ -54,7 +54,7 @@ python train_segmentation.py path/to/segmentation.yaml --epochs 100 --imgsz 640 
 - `--batch`: Batch size  
 - `--patience`: Early stopping after N epochs with no improvement  
 
-I’ve included some trained weights in the repository.
+The final trained weights (best.pt) from the segmentation model are included in the repository and should be used for inference during testing.
 
 ---
 
