@@ -70,9 +70,8 @@ Despite training on just 18 images, the model produced encouraging results on th
 
 ---
 
-## ROS2 Node
+## ROS2 Node Development
 
-ROS2 Node Development
 I started working on the pallet_detection_node, but couldn’t complete the full ROS2 integration due to compatibility issues on macOS. Some ROS2 Humble dependencies and tools required for real-time testing weren’t fully supported. I’ve uploaded the code I wrote so far, which includes the basic structure for subscribing to image topics and running model inference. This can be further developed and tested on a Linux system.
 ---
 
@@ -80,5 +79,5 @@ I started working on the pallet_detection_node, but couldn’t complete the full
 
 - Dataset annotations were done using DINO  
 - Model was trained and tested locally  
-- Results and sample outputs can be found in the `results/` folder  
+- A small fraction of the results can be found in the `results/` folder  
 
