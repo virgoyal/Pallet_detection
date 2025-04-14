@@ -72,13 +72,13 @@ Despite training on just 18 images, the model produced encouraging results on th
 
 ## ROS2 Node
 
-ROS2 node development was not completed. I was working on macOS and ran into several compatibility issues that prevented successful integration.
-
+ROS2 Node Development
+I started working on the pallet_detection_node, but couldn’t complete the full ROS2 integration due to compatibility issues on macOS. Some ROS2 Humble dependencies and tools required for real-time testing weren’t fully supported. I’ve uploaded the code I wrote so far, which includes the basic structure for subscribing to image topics and running model inference. This can be further developed and tested on a Linux system.
 ---
 
 ## Notes
 
 - Dataset annotations were done using DINO  
 - Model was trained and tested locally  
-- Results and sample outputs can be found in the `outputs/` folder  
-- This project serves as a prototype for real-time segmentation in edge-deployable robotics applications
+- Results and sample outputs can be found in the `results/` folder  
+
