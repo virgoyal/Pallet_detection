@@ -11,7 +11,9 @@ This repository contains a pipeline for detecting and segmenting pallets and gro
 
 ## Dataset Preparation
 
-I used **DINO** to annotate 18 images from the provided pallet dataset. A simple script was written to split the annotated `.png` and `.json` files into training, validation, and test folders.
+I used **DINO** to annotate 20 images from the provided pallet dataset. A simple script was written to split the annotated `.png` and `.json` files into training, validation, and test folders.
+
+I supplemented this dataset with data from (RoboFlow)[https://universe.roboflow.com/david-akhihiero-pvxdr/pallet_and_ground]
 
 ---
 
@@ -33,8 +35,14 @@ python augment.py <path_to_data_dir> <path_to_output_dir> --augmentation_factor 
 
 The next step converts the detection-style dataset into a format suitable for segmentation model training:
 
+For the provided data I used - 
 ```bash
 python prepare_segmentation_data.py <source_detection_dataset_path> <output_segmentation_dataset_path>
+```
+
+For the supplementary data I used - 
+```bash
+python coco_yolo.py
 ```
 
 ---
@@ -44,7 +52,7 @@ python prepare_segmentation_data.py <source_detection_dataset_path> <output_segm
 A YOLOv8-compatible segmentation model was trained using the prepared dataset:
 
 ```bash
-python train_segmentation.py path/to/segmentation.yaml --epochs 100 --imgsz 640 --batch 4 --patience 15
+python train_segmentation.py path/to/data.yaml --epochs 100 --imgsz 640 --batch 4 --patience 15
 ```
 
 **Arguments:**
@@ -54,7 +62,7 @@ python train_segmentation.py path/to/segmentation.yaml --epochs 100 --imgsz 640 
 - `--batch`: Batch size  
 - `--patience`: Early stopping after N epochs with no improvement  
 
-The final trained weights (best.pt) from the segmentation model are included in the repository and should be used for inference during testing.
+The final trained weights (model_best.pt) from the segmentation model are included in the repository and should be used for inference during testing.
 
 ---
 
@@ -66,18 +74,21 @@ Inference was run on the full set of 150 images provided in the pallet dataset:
 python test_model.py <model_path> <image_dir> <output_dir>
 ```
 
-Despite training on just 18 images, the model produced encouraging results on the full dataset.
+The model produced encouraging results on the test dataset.
 
 ---
 
 ## ROS2 Node Development
+The ROS 2 node was developed to perform real-time inference using the trained YOLOv8 segmentation model. The node subscribes to an image topic, runs segmentation inference, and publishes or displays the result using OpenCV.
 
-I started working on the pallet_detection_node, but couldn’t complete the full ROS2 integration due to compatibility issues on macOS. Some ROS2 Humble dependencies and tools required for real-time testing weren’t fully supported. I’ve uploaded the code I wrote so far, which includes the basic structure for subscribing to image topics and running model inference. This can be further developed and tested on a Linux system.
+To simplify launching the node, a ROS 2 launch file is included:
+
+```bash
+ros2 launch pall_detect pallet_launch.py model_path:= <model_path> 
+```
+The model path can be passed as an argument using model_path:=...
+
+Inside the node, you can also adjust the confidence threshold to filter predictions (default: 0.5). 
+
+
 ---
-
-## Notes
-
-- Dataset annotations were done using DINO  
-- Model was trained and tested locally  
-- A small fraction of the results can be found in the `results/` folder  
-
