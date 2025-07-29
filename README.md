@@ -13,7 +13,7 @@ This repository contains a pipeline for detecting and segmenting pallets and gro
 
 I used **DINO** to annotate 20 images from the provided pallet dataset. A simple script was written to split the annotated `.png` and `.json` files into training, validation, and test folders.
 
-I supplemented this dataset with data from (RoboFlow)[https://universe.roboflow.com/david-akhihiero-pvxdr/pallet_and_ground]
+I supplemented this dataset with data from [RoboFlow](https://universe.roboflow.com/david-akhihiero-pvxdr/pallet_and_ground)
 
 ---
 
