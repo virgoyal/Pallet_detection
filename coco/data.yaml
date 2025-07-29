@@ -1,6 +1,0 @@
-train: /home/akxhay/Desktop/coco/train/images
-val: /home/akxhay/Desktop/coco/train/images
-
-nc: 2
-names: ['floor', 'pallet']
-
