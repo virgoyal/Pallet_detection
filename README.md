@@ -92,3 +92,6 @@ Inside the node, you can also adjust the confidence threshold to filter predicti
 
 
 ---
+
+peer\_vision/ ├── coco/                         # Supplementary dataset │   ├── data.yaml │   └── pallet\_and\_ground.v9i.coco-segmentation.zip ├── pall\_detect/                  # ROS 2 package for real-time detection │   ├── launch/                   # Launch files for running the node │   ├── models/                   # Trained YOLOv8 model weights (e.g., best.pt) │   ├── pall\_detect/              # ROS 2 node implementation (Python) │   ├── requirements.txt          # Python dependencies │   ├── setup.py / setup.cfg      # ROS 2 Python package setup │   ├── package.xml               # ROS 2 package metadata │   └── resource/                 # ROS 2 resource directory (e.g., index files) ├── scripts/                      # Utility scripts for training and data prep │   ├── augment.py │   ├── coco\_yolo.py │   ├── prepare\_segmentation\_data.py │   └── train\_segmentation.py ├── README.md                     # Project documentation&#x20;
+
