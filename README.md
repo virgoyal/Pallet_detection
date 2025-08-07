@@ -62,7 +62,7 @@ python train_segmentation.py path/to/data.yaml --epochs 100 --imgsz 640 --batch 
 - `--batch`: Batch size  
 - `--patience`: Early stopping after N epochs with no improvement  
 
-The final trained weights (pall_detect/models/model_best.pt) from the segmentation model are included in the repository and should be used for inference during testing.
+**The final trained weights (pall_detect/models/model_best.pt) from the segmentation model are included in the repository and should be used for inference during testing.**
 
 ---
 
