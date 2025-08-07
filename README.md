@@ -74,6 +74,9 @@ Inference was run on the full set of 150 images provided in the pallet dataset:
 python test_model.py <model_path> <image_dir> <output_dir>
 ```
 
+My best weights can be found in Pallet_detection/models/best_model.pt
+
+
 The model produced encouraging results on the test dataset.
 
 ---
