@@ -42,7 +42,7 @@ def coco_to_yolo_seg(json_path, images_dir, output_labels_dir):
         with open(label_path, 'w') as f:
             f.write('\n'.join(label_lines))
 
-# Example usage
+
 if __name__ == "__main__":
     coco_to_yolo_seg(
         json_path="/home/akxhay/Desktop/coco/train/_annotations.coco.json",
